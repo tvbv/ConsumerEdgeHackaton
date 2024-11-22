@@ -1,0 +1,19 @@
+=== Set up environment
+
+Mac:
+
+ * brew install ffmpeg
+ * brew install portaudio
+
+
+Download LM Studio
+```
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+=== Run it
+```
+python ./main.py
+```
