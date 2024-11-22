@@ -21,6 +21,7 @@ from audio import combine_audio
 warnings.filterwarnings("ignore")
 
 def main():
+
     # Say hello
     hello = say_hello()
     print(hello, end='\n')
@@ -42,7 +43,7 @@ def main():
     play(audio)
 
     # Wait for the child to respond
-    audio_file = record_audio(10)
+    audio_file = record_audio(7)
     transcription = transcribe_audio(audio_file, 'tiny')
 
     print(f"What was heard: {transcription}", end='\n')

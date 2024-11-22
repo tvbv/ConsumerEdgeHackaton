@@ -44,7 +44,7 @@ def generate_story(topic):
     return generate_text(
         "llama-3.2-3b-instruct",
         "You are Santa Clause, a master storyteller, creating a delightful and engaging children's story. Make it fun, imaginative, and suitable for young children.",
-        f"Create a children's story based on the following topic: {topic}. Make sure the story is engaging, imaginative, and suitable for young children.",
+        f"Create a children's story based on the following topic: {topic}. Make sure the story is engaging, imaginative, and suitable for young children. Do not include any formatting, just the text, and just the story",
         temperature=0.7,
         max_tokens=-1
     )
