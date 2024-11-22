@@ -8,6 +8,10 @@ import sounddevice as sd
 import tempfile
 import wave
 import warnings
+from playsound import playsound
+from pydub import AudioSegment
+from pydub.playback import play
+
 
 from audio import record_audio, transcribe_audio
 from story import generate_story_topics, say_hello, ask_which_story, determine_story, generate_story
@@ -19,7 +23,10 @@ def main():
 
     # Say hello
     hello = say_hello()
-    text_to_speech_file(hello)
+    print(hello, end='\n')
+    file = text_to_speech_file(hello)
+    audio = AudioSegment.from_file(file, format="mp3")
+    play(audio)
 
     # Generate Story Ideas
     story_ideas = generate_story_topics()
@@ -27,7 +34,12 @@ def main():
     print(story_ideas_list, end='\n')
 
     # Ask which story they want to hear
-    ask_which_story(story_ideas)
+    which_story = ask_which_story(story_ideas_list)
+    print(which_story, end='\n')
+
+    file = text_to_speech_file(which_story)
+    audio = AudioSegment.from_file(file, format="mp3")
+    play(audio)
 
     # Wait for the child to respond
     audio_file = record_audio(5)
