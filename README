@@ -1,5 +1,7 @@
 === Set up environment
 
+ * Download LLM studio and install llama-3.2-3b-instruct model
+
 Mac:
 
  * brew install ffmpeg
