@@ -6,8 +6,12 @@ from text_gen import generate_text
 def generate_story_topics():
     return generate_text(
         "llama-3.2-3b-instruct", 
-        "You are Santa Claus, interacting with a child. Keep it very brief and cheerful.", 
-        "Generate three possible story topics, only return the story topics, no other text, separated by commas."
+        "You are a childrens story teller, who tells thoughtful, imaginative stories.", 
+        "Generate three possible story topics, as told by Santa Claus. Only return three story topics, "
+        "make them simple to reference, so the child can easily choose one. Make them Santa Claus topics. "
+        "Only return three topics, no other text, separated by commas.",
+        temperature=0.7,
+        max_tokens=-1
     )
 
 def say_hello():

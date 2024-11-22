@@ -50,6 +50,10 @@ def main():
     story_topic = determine_story(story_ideas_list, transcription)
 
     story = generate_story(story_topic)
+    file = text_to_speech_file(story)
+    audio = AudioSegment.from_file(file, format="mp3")
+    play(audio)
+
     print(story, end='\n')
 
 if __name__ == "__main__":
