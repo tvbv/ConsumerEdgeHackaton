@@ -58,3 +58,17 @@ def text_to_speech_file(text: str) -> str:
 
     # Return the path of the saved audio file
     return save_file_path
+
+# text_to_speech_file("This is a test")
+
+text_to_speech_file("""
+Once upon a time, in the vast night sky, there lived a little star named Luma. She wasn't as big or bright as the other stars, and she often felt unnoticed. But she had a dream—to shine her light on something truly special.
+
+One chilly December night, Luma noticed a commotion among the stars. "What’s happening?" she asked.
+
+“The Great Star has a task for us!” said a glowing comet. “A very special child is being born on Earth, and one of us must guide the way to him.”
+
+Luma's heart leapt. Could this be her chance? She twinkled as brightly as she could and floated to the Great Star.
+
+“I want to help!” she said, her voice tiny but full of hope.
+""")
