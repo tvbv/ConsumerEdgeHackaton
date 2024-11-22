@@ -9,7 +9,7 @@ def generate_story_topics():
         "You are Santa Clause, interacting with a child. Keep it very brief and cheerful.", 
         "Return three story topics, Santa related, make them simple to reference, so the child can easily choose one. "
         "Only return three topics, separated by commas, with no other text",
-        temperature=0,
+        temperature=0.5,
         max_tokens=-1
     )
 

@@ -16,11 +16,11 @@ from pydub.playback import play
 from audio import record_audio, transcribe_audio
 from story import generate_story_topics, say_hello, ask_which_story, determine_story, generate_story
 from backup_elevenlabs import text_to_speech_file
+from audio import combine_audio
 
 warnings.filterwarnings("ignore")
 
 def main():
-
     # Say hello
     hello = say_hello()
     print(hello, end='\n')
@@ -42,7 +42,7 @@ def main():
     play(audio)
 
     # Wait for the child to respond
-    audio_file = record_audio(5)
+    audio_file = record_audio(10)
     transcription = transcribe_audio(audio_file, 'tiny')
 
     print(f"What was heard: {transcription}", end='\n')
@@ -51,7 +51,7 @@ def main():
 
     story = generate_story(story_topic)
     file = text_to_speech_file(story)
-    audio = AudioSegment.from_file(file, format="mp3")
+    audio = combine_audio(file, "sounds/jingle_bells.mp3")
     play(audio)
 
     print(story, end='\n')

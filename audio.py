@@ -4,6 +4,8 @@ import wave
 import numpy as np
 import tempfile
 import whisper
+from pydub import AudioSegment
+from pydub.playback import play
 
 def record_audio(duration, sample_rate=16000):
     print(f"Recording for {duration} seconds...")
@@ -28,3 +30,25 @@ def transcribe_audio(file_path, model_name="base"):
     print("Model loaded. Transcribing audio...")
     result = model.transcribe(file_path)
     return result["text"]
+
+def combine_audio(speech_sound, background_sound):
+    # Load your audio files
+    speech = AudioSegment.from_file(speech_sound)  # Replace with your Eleven Labs audio file
+    background = AudioSegment.from_file(background_sound)  # Replace with your background music file
+
+    # Adjust volumes if necessary
+    speech = speech + 5  # Increase volume of speech
+    background = background - 7  # Lower volume of background music
+
+    # Adjust the background music to match the length of the speech
+    if len(background) > len(speech):
+        # Trim the background music
+        background = background[:len(speech)]
+    else:
+        # Loop the background music
+        loops_needed = len(speech) // len(background) + 1
+        background = (background * loops_needed)[:len(speech)]
+
+    # Overlay the audio files
+    combined = background.overlay(speech)
+    return combined;
