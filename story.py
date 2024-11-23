@@ -3,17 +3,21 @@ import json
 
 from text_gen import generate_text
 
-def generate_story_topics():
-    return generate_text(
+def gen_story_topics() -> list:
+    topics = generate_text(
         "llama-3.2-3b-instruct", 
         "You are Santa Clause, interacting with a child. Keep it very brief and cheerful.", 
         "Return three story topics, Santa related, make them simple to reference, so the child can easily choose one. "
-        "Only return three topics, separated by commas, with no other text",
+        "Only return three topics, separated by commas, with no other text, or formatting",
         temperature=0.5,
         max_tokens=-1
     )
 
-def say_hello():
+    print('Parsed topics:', topics, end='\n')
+    return topics.split(',')
+
+
+def gen_hello() -> str:
     return generate_text(
         "llama-3.2-3b-instruct",
         "You are Santa Clause, interacting with a child. Keep it very brief and cheerful.",
@@ -22,7 +26,7 @@ def say_hello():
         max_tokens=-1
     )
 
-def ask_which_story(story_ideas):
+def gen_ask_which_story(story_ideas: list) -> str:
     return generate_text(
         "llama-3.2-3b-instruct",
         "You are Santa Clause, interacting with a child. Keep it very brief and cheerful.",
@@ -40,7 +44,7 @@ def determine_story(story_ideas, input):
         max_tokens=150
     )
 
-def generate_story(topic):
+def gen_story(topic: str) -> str:
     return generate_text(
         "llama-3.2-3b-instruct",
         "You are Santa Clause, a master storyteller, creating a delightful and engaging children's story. Make it fun, imaginative, and suitable for young children.",

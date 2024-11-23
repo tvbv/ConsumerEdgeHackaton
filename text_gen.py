@@ -20,6 +20,8 @@ def generate_text(model_name, system_content, user_content, temperature=0.7, max
     response = requests.post(url, headers=headers, data=json.dumps(data))
     if response.status_code == 200:
         result = response.json()
-        return result['choices'][0]['message']['content']
+        content = result['choices'][0]['message']['content']
+        print(content, end='\n')
+        return content
     else:
-        return "Failed to get a response from the server."
+        return "Ho ho ho! Merry Christmas!"

@@ -6,6 +6,17 @@ import tempfile
 import whisper
 from pydub import AudioSegment
 from pydub.playback import play
+from elevenlabs_tty import text_to_speech_file
+
+def say(what_to_say: str):
+    file = text_to_speech_file(what_to_say)
+    audio = AudioSegment.from_file(file, format="mp3")
+    play(audio)
+
+def say_with_music(what_to_say: str):
+    file = text_to_speech_file(what_to_say)
+    combined = combine_audio(file, "sounds/jingle_bells.mp3")
+    play(combined)
 
 def record_audio(duration, sample_rate=16000):
     print(f"Recording for {duration} seconds...")
