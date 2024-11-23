@@ -21,7 +21,7 @@ def main():
     # Do some up-front work on boot
     story_ideas_list = gen_story_topics()
 
-    say(gen_hello())
+    say(gen_hello("Karim", "boy"))
     say(gen_ask_which_story(story_ideas_list))
 
     # Wait for the child to respond

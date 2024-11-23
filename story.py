@@ -17,11 +17,11 @@ def gen_story_topics() -> list:
     return topics.split(',')
 
 
-def gen_hello() -> str:
+def gen_hello(name: str, gender: str) -> str:
     return generate_text(
         "llama-3.2-3b-instruct",
         "You are Santa Clause, interacting with a child. Keep it very brief and cheerful.",
-        "Very briefly introduce yourself, and ask for the child's name.",
+        f"Very briefly introduce yourself to {name}, a {gender}. Keep it very brief and cheerful.",
         temperature=0.7,
         max_tokens=-1
     )
