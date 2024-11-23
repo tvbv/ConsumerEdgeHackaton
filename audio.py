@@ -13,9 +13,13 @@ def say(what_to_say: str):
     audio = AudioSegment.from_file(file, format="mp3")
     play(audio)
 
-def say_with_music(what_to_say: str):
+def say_with_music(what_to_say: str, music_file: str):
     file = text_to_speech_file(what_to_say)
-    combined = combine_audio(file, "sounds/jingle_bells.mp3")
+    combined = combine_audio(file, music_file)
+    play(combined)
+
+def play_with_music(audio_file: str, music_file: str):
+    combined = combine_audio(audio_file, music_file)
     play(combined)
 
 def record_audio(duration, sample_rate=16000):
