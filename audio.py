@@ -8,6 +8,7 @@ from pydub import AudioSegment
 from pydub.playback import play
 from elevenlabs_tty import text_to_speech_file
 
+
 def say(what_to_say: str):
     file = text_to_speech_file(what_to_say)
     audio = AudioSegment.from_file(file, format="mp3")
@@ -21,6 +22,12 @@ def say_with_music(what_to_say: str, music_file: str):
 def play_with_music(audio_file: str, music_file: str):
     combined = combine_audio(audio_file, music_file)
     play(combined)
+
+def play_sound(sound_file: str):
+    audio = AudioSegment.from_file(sound_file, format="mp3")
+    audio = audio - 12  # Lower the volume by 10 dB
+    audio = audio * 2  # Loop the audio
+    play(audio)
 
 def record_audio(duration, sample_rate=16000):
     print(f"Recording for {duration} seconds...")
